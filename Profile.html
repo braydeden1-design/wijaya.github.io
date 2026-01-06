@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Kabupaten Kuningan</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+
+       .header {
+            position: relative;
+            width: 100%;
+            height: 65vh;
+            min-height: 380px;
+            background-image: url("br.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.75)
+            );
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #ffffff;
+            padding: 20px;
+            max-width: 900px;
+            animation: fadeUp 1.2s ease;
+        }
+
+        .header-content h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .header-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        .header-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 30px;
+            border-radius: 50px;
+            background-color: #2e7d32;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .header-btn:hover {
+            background-color: #1b5e20;
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .header {
+                height: 55vh;
+            }
+
+            .header-content h1 {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                height: 50vh;
+                min-height: 300px;
+            }
+
+            .header-content h1 {
+                font-size: 2rem;
+            }
+
+            .header-content p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content h1 {
+                font-size: 1.6rem;
+            }
+
+            .header-btn {
+                padding: 10px 22px;
+                font-size: 14px;
+            }
+        }
+        /* Section */
+        .section {
+            padding: 50px 10%;
+        }
+
+        .section h2 {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 20px;
+        }
+
+        .section p {
+            text-align: center;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            color: #1b5e20;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .btn {
+            display: block;
+            width: fit-content;
+            margin: 40px auto 0;
+            padding: 12px 25px;
+            background-color: #2e7d32;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #1b5e20;
+        }
+
+        footer {
+            margin-top: 10px;
+            background-color: #1b5e20;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-bottom-left-radius: 50px;
+            border-top-right-radius: 50px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+
+            background: transparent;
+            transition: 0.4s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+
+        .nav-logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #4caf50;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background: rgba(0,0,0,0.9);
+            border-radius: 6px;
+            min-width: 200px;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 16px;
+            font-size: 0.95rem;
+        }
+
+        .nav-menu li:hover .dropdown {
+            display: block;
+        }
+
+        .nav-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+
+        @media (max-width: 768px) {
+            .navbar {
+            padding: 14px 24px;
+            }
+
+            .nav-toggle {
+            display: block;
+            }
+
+        .nav-menu {
+            position: absolute;
+            top: 70px;
+            right: 0;
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+
+            flex-direction: column;
+            align-items: center;
+            background: rgba(0,0,0,0.95);
+            transition: height 0.4s ease;
+        }
+
+        .nav-menu.active {
+            height: 300px;
+            padding-top: 20px;
+        }
+
+        .nav-menu li:hover .dropdown {
+            display: none;
+        }
+
+        .dropdown {
+            position: static;
+            background: none;
+        }
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .nav-clock {
+            color: #4caf50;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.4);
+            letter-spacing: 1px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-clock {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <link rel="stylesheet" href="nav.css">
+
+    <nav class="navbar" id="navbar">
+    <div class="nav-left">
+        <span class="nav-logo">Kuningan</span>
+        <span class="nav-clock" id="clock">00:00:00</span>
+    </div>
+
+    <div class="nav-toggle" onclick="toggleMenu()">☰</div>
+
+    <ul class="nav-menu" id="navMenu">
+        <li><a href="Index.html">Home</a></li>
+        <li><a href="Profile.html" class="active">Profile</a></li>
+        <li><a href="Gallery.html">Gallery</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+    </ul>
+    </nav>
+
+    <script>
+    function updateClock() {
+    const now = new Date();
+    let hours = now.getHours().toString().padStart(2, '0');
+    let minutes = now.getMinutes().toString().padStart(2, '0');
+    let seconds = now.getSeconds().toString().padStart(2, '0');
+
+    document.getElementById("clock").innerText =
+        hours + ":" + minutes + ":" + seconds;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("active");
+    }
+
+    function closeMenu() {
+    document.getElementById("navMenu").classList.remove("active");
+    }
+
+    window.addEventListener("scroll", function () {
+    document.getElementById("navbar")
+        .classList.toggle("scrolled", window.scrollY > 50);
+    });
+    </script>
+
+<header class="header">
+    <div class="header-content">
+        <h1>Profil Wiasata Kabupaten Kuningan</h1>
+        <h2>Wisata Kabupaten Kuningan</h2>
+        <p>
+            Dari megahnya Gunung Ciremai hingga jernihnya Talaga Biru Cicerem,
+            Kuningan menyuguhkan pesona alam dan sejarah yang tak terlupakan.
+        </p>
+    </div>
+</header>
+
+<!-- Profil -->
+<section class="section">
+    <h2>Tentang Kabupaten Kuningan</h2>
+    <p>
+        Kabupaten Kuningan terletak di Jawa Barat dan dikenal sebagai daerah
+        dengan udara sejuk, alam yang asri, serta kekayaan wisata alam dan sejarah.
+        Keindahan Kuningan menjadi daya tarik bagi wisatawan lokal maupun mancanegara.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <img src="gn.jpg">
+            <div class="card-content">
+                <h3>Gunung Ciremai</h3>
+                <p>
+                    Gunung tertinggi di Jawa Barat yang menjadi simbol keagungan alam,
+                    menawarkan jalur pendakian menantang dan panorama menakjubkan.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="gd.jpg">
+            <div class="card-content">
+                <h3>Linggarjati</h3>
+                <p>
+                    Situs bersejarah tempat lahirnya Perjanjian Linggarjati,
+                    saksi perjalanan penting kemerdekaan Indonesia.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="km.jpeg">
+            <div class="card-content">
+                <h3>Sangkanhurip</h3>
+                <p>
+                    Pemandian air panas alami yang dipercaya dapat menyegarkan tubuh
+                    dan menenangkan pikiran.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="wd.jpg">
+            <div class="card-content">
+                <h3>Waduk Darma</h3>
+                <p>
+                    Destinasi wisata air dengan pemandangan menawan,
+                    sempurna untuk menikmati ketenangan dan keindahan senja.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="tb.jpeg">
+            <div class="card-content">
+                <h3>Talaga Biru Cicerem</h3>
+                <p>
+                    Danau alami dengan air jernih berwarna biru kehijauan,
+                    menciptakan suasana damai yang memikat hati.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="#" class="btn" onclick="pesan()">Kenali Kuningan Lebih Dekat</a>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>© 2025 Profil Wisata Kabupaten Kuningan</p>
+</footer>
+
+<script>
+    function pesan() {
+        alert("Kabupaten Kuningan menanti kehadiranmu untuk menjelajahi keindahan alam dan sejarahnya 🌿");
+    }
+</script>
+
+</body>
+</html>
